@@ -176,7 +176,7 @@ int Frame_txtReader::run()
         _canvas_page->setTextSize(26);
         _canvas_page->fillCanvas(0);
         char buf[5];
-        sprintf(buf, "%d", _page + 1);
+        sprintf(buf, "%lu", _page + 1);
         _canvas_page->drawString(buf, 100, 42);
         _canvas_page->pushCanvas(440 - 15, 0, UPDATE_MODE_GL16);
     }

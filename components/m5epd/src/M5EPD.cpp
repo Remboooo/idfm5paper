@@ -3,7 +3,7 @@
 #include "driver/adc.h"
 #include "soc/adc_channel.h"
 
-#define BAT_ADC_CHANNEL ADC1_GPIO35_CHANNEL
+#define BAT_ADC_CHANNEL ADC1_CHANNEL_7
 #define BASE_VOLATAGE 3600
 #define SCALE 0.5//0.78571429
 #define ADC_FILTER_SAMPLE 8

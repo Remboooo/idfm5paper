@@ -892,7 +892,7 @@ typedef struct
     uint16_t outHeight;
 } jpg_file_decoder_t;
 
-static uint32_t jpgReadFile(JDEC *decoder, uint8_t *buf, uint32_t len)
+static UINT jpgReadFile(JDEC *decoder, BYTE *buf, UINT len)
 {
     jpg_file_decoder_t *jpeg = (jpg_file_decoder_t *)decoder->device;
     File *file = (File *)jpeg->src;
@@ -907,7 +907,7 @@ static uint32_t jpgReadFile(JDEC *decoder, uint8_t *buf, uint32_t len)
     return len;
 }
 
-static uint32_t jpgRead(JDEC *decoder, uint8_t *buf, uint32_t len)
+static UINT jpgRead(JDEC *decoder, BYTE *buf, UINT len)
 {
     jpg_file_decoder_t *jpeg = (jpg_file_decoder_t *)decoder->device;
     if (buf)
@@ -1105,13 +1105,6 @@ bool M5EPD_Canvas::drawJpgFile(fs::FS &fs, const char *path, uint16_t x, uint16_
 
     file.close();
     return ret;
-}
-
-bool drawJpgFile(fs::FS &fs, String path, uint16_t x, uint16_t y,
-                            uint16_t maxWidth, uint16_t maxHeight, uint16_t offX,
-                            uint16_t offY, jpeg_div_t scale)
-{
-    return drawJpgFile(fs, path.c_str(), x, y, maxWidth, maxHeight, offX, offY, scale);
 }
 
 bool M5EPD_Canvas::drawJpgUrl(String url, uint16_t x,
@@ -1321,14 +1314,6 @@ bool M5EPD_Canvas::drawPngFile(fs::FS &fs, const char *path, uint16_t x, uint16_
     pngle_destroy(pngle);
     file.close();
     return 1;
-}
-
-// Please note that drawing png will consume a lot of time
-bool drawPngFile(fs::FS &fs, String path, uint16_t x, uint16_t y,
-                               uint16_t maxWidth, uint16_t maxHeight, uint16_t offX,
-                               uint16_t offY, double scale, uint8_t alphaThreshold)
-{
-    return drawPngFile(fs, path.c_str(), x, y, maxWidth, maxHeight, offX, offY, scale, alphaThreshold);
 }
 
 // Please note that drawing png will consume a lot of time

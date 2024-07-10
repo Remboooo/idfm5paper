@@ -10,6 +10,7 @@
 #include "esp_event.h"
 #include "esp_chip_info.h"
 #include "nvs_flash.h"
+#include "esp_flash.h"
 
 #include "wifi_manager.h"
 
@@ -29,7 +30,7 @@ void info()
     log_d("Test new()...");
     uint8_t *testNewBuffer = new uint8_t[900000];
     if(testNewBuffer) log_d("NOT NULL"); else log_d("NULL");
-    delete testNewBuffer;
+    delete[] testNewBuffer;
 
     /* Print chip information */
     esp_chip_info_t chip_info;
@@ -42,7 +43,9 @@ void info()
 
     log_d("silicon revision %d, ", chip_info.revision);
 
-    log_d("%dMB %s flash\n", spi_flash_get_chip_size() / (1024 * 1024),
+    uint32_t flash_size;
+    esp_flash_get_size(NULL, &flash_size);
+    log_d("%dMB %s flash\n", flash_size / (1024 * 1024),
             (chip_info.features & CHIP_FEATURE_EMB_FLASH) ? "embedded" : "external");
 }
 

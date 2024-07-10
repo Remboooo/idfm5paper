@@ -1,5 +1,7 @@
 #include "M5EPD_Canvas.h"
 #include <HTTPClient.h>
+#include <WiFi.h>
+#include <WifiClient.h>
 
 M5EPD_Canvas::M5EPD_Canvas(M5EPD_Driver *driver) : TFT_eSprite(NULL)
 {
@@ -916,7 +918,7 @@ static uint32_t jpgRead(JDEC *decoder, uint8_t *buf, uint32_t len)
     return len;
 }
 
-static uint32_t jpgWrite(JDEC *decoder, void *bitmap, JRECT *rect)
+static UINT jpgWrite(JDEC *decoder, void *bitmap, JRECT *rect)
 {
     jpg_file_decoder_t *jpeg = (jpg_file_decoder_t *)decoder->device;
     uint16_t x = rect->left;
@@ -984,7 +986,7 @@ static uint32_t jpgWrite(JDEC *decoder, void *bitmap, JRECT *rect)
 }
 
 static bool jpgDecode(jpg_file_decoder_t *jpeg,
-                      uint32_t (*reader)(JDEC *, uint8_t *, uint32_t))
+                      UINT (*reader)(JDEC *, BYTE*, UINT))
 {
     static uint8_t work[3100];
     JDEC decoder;

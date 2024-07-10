@@ -257,7 +257,7 @@ int Frame_FactoryTest::run()
         pass_flag |= 0x0200;
         _last_x = M5.TP.readFingerX(0);
         _last_y = M5.TP.readFingerY(0);
-        sprintf(buf, "X %d, Y %d", _last_x, _last_y);
+        sprintf(buf, "X %lu, Y %lu", _last_x, _last_y);
         _canvas_pos->fillCanvas(0);
         _canvas_pos->drawString(buf, POS_RX, 30);
         _canvas_pos->pushCanvas(300, 640, UPDATE_MODE_A2);
@@ -394,7 +394,7 @@ int Frame_FactoryTest::run()
             String ssid;
             int32_t rssi = 0;
             scan(&ssid, &rssi);
-            sprintf(buf, "%s (%d db)", ssid.c_str(), rssi);
+            sprintf(buf, "%s (%ld db)", ssid.c_str(), rssi);
             _wifistr = String(buf);
             if (ssid.length() >= 1)
             {

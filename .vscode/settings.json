@@ -4,13 +4,20 @@
   "C_Cpp.intelliSenseEngine": "Tag Parser",
   "cmake.configureOnOpen": true,
   "idf.flashType": "UART",
-  "idf.port": "/dev/cu.usbserial-021420B8",
-  "idf.portWin": "COM6",
+  "idf.portWin": "COM4",
   "[cpp]": {
-    "editor.quickSuggestions": true
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
   },
   "[c]": {
-    "editor.quickSuggestions": true
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
   },
   "files.associations": {
     "spiram.h": "c",
@@ -30,6 +37,7 @@
     "istream": "cpp",
     "ostream": "cpp",
     "xhash": "cpp",
-    "json.h": "c"
+    "json.h": "c",
+    "esp_wifi.h": "c"
   },
 }

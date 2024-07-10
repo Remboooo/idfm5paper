@@ -14,7 +14,7 @@ set(COMPONENT_ADD_INCLUDEDIRS
         "${IDF_PATH_CMAKE}/components/protocomm/include/security"
         "${IDF_PATH_CMAKE}/components/soc/include")
 
-list(APPEND COMPONENT_REQUIRES "arduino")
+list(APPEND COMPONENT_REQUIRES "arduino-esp32")
 
 set(CONFIG_BT_BLUEDROID_ENABLED 1)
 

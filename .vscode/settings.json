@@ -40,4 +40,5 @@
     "json.h": "c",
     "esp_wifi.h": "c"
   },
+  "idf.adapterTargetName": "esp32",
 }

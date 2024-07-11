@@ -1,14 +1,21 @@
-message(STATUS "Settings main")
+message(STATUS "Calculator main")
 
-set(COMPONENT_SRCDIRS "." "epdgui" "frame")
+idf_component_register(
 
-set(COMPONENT_ADD_INCLUDEDIRS "resources")
+SRCS 
+    "main.cpp" 
+    "calculator.cpp" 
+    "epdgui/epdgui_base.cpp" 
+    "epdgui/epdgui_button.cpp" 
+    "epdgui/epdgui_mutexswitch.cpp"
+    "epdgui/epdgui_switch.cpp"
+    "epdgui/epdgui_textbox.cpp"
+    "epdgui/epdgui.cpp"
 
-list(APPEND COMPONENT_REQUIRES "spi_flash")
-list(APPEND COMPONENT_REQUIRES "m5epd")
-list(APPEND COMPONENT_REQUIRES "appjs")
-
-register_component()
+INCLUDE_DIRS
+    "."
+    "./epdgui"
+)
 
 component_compile_options(
                 -Wno-unused-const-variable
